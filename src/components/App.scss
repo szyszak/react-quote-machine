@@ -1,0 +1,15 @@
+.App {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+// MEDIA QUERIES
+
+@media (max-width: 560px) {
+  .App {
+    display: block;
+  }
+}

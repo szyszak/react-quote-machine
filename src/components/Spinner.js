@@ -4,13 +4,13 @@ import './Spinner.scss';
 class Spinner extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
 
   render() {
-    return(
+    return (
       <>
-        <div className="spinner"></div>
+        <div className="spinner" />
         <p className="spinner-text">SOMETHING IS LOADING...</p>
       </>
     );

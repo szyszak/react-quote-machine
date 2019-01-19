@@ -22,12 +22,15 @@ class QuoteCard extends Component {
   render() {
     return(
       <div className="card">
-        { this.state.character ? 
-          <img src={ require(`../images/${this.state.character}.png`) } alt={ this.state.character } className="card__img" /> 
-          : <Spinner /> }
-
-        <blockquote className="card__quote" >{ this.state.quote }</blockquote>
-        <cite className="card__author" >- { this.state.character }</cite>
+        { this.state.character ?
+          <> 
+            <img src={ require(`../images/${this.state.character}.png`) } alt={ this.state.character } className="card__img" /> 
+            <blockquote className="card__quote" >{ this.state.quote }</blockquote>
+            <cite className="card__author" >- { this.state.character }</cite>
+          </>
+          : 
+          <Spinner /> }
+        
 
         <div className="buttons">
           <button className="card__btn card__btn--fetch" onClick={ () => { this.getQuote() } } >GET ANOTHER ONE</button>

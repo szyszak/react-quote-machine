@@ -8,12 +8,10 @@
   animation: load 1.8s infinite ease-in-out;
 }
 .spinner {
+  margin-bottom: 50px;
   color: #00aced;
   font-size: 10px;
-  margin: 80px auto;
   position: relative;
-  text-indent: -9999em;
-  transform: translateZ(0);
   animation-delay: -0.16s;
 }
 .spinner:before,
@@ -39,4 +37,9 @@
   40% {
     box-shadow: 0 2.5em 0 0;
   }
+}
+
+.spinner-text {
+  font-family: "Gloria Hallelujah";
+  font-size: 21px;
 }

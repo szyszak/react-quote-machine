@@ -9,7 +9,10 @@ class Spinner extends Component {
 
   render() {
     return(
-      <div className="spinner"></div>
+      <>
+        <div className="spinner"></div>
+        <p className="spinner-text">SOMETHING IS LOADING...</p>
+      </>
     );
   }
 }

@@ -1,7 +1,104 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 import { TwitterShareButton, TwitterIcon } from "react-share";
 import Spinner from "./Spinner";
-import "./QuoteCard.scss";
+
+// STYLES
+
+const CardWrapper = styled.div`
+  max-width: 600px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+
+  @media (max-width: 520px) {
+    max-width: 600px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+  }
+`;
+
+const CardImg = styled.img`
+  display: block;
+  width: auto;
+  max-height: 400px;
+  height: 100%;
+
+  @media (max-width: 520px) {
+    max-height: 300px;
+  }
+`;
+
+const CardQuote = styled.blockquote`
+  margin-top: 20px;
+  font-family: "Gloria Hallelujah";
+  font-size: 22px;
+
+  @media (max-width: 520px) {
+    font-size: 18px;
+  }
+`;
+
+const CardAuthor = styled.cite`
+  margin-top: 16px;
+  font-size: 20px;
+`;
+
+const CardButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+
+  @media (max-width: 520px) {
+    flex-direction: column;
+  }
+`;
+
+const CardBtn = styled.button`
+  height: 55px;
+  padding: 16px 24px;
+  border: none;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+
+  ${({ fetch }) => "background-color: #00de36;"}; // simulates BEM modifier
+
+  @media (max-width: 520px) {
+    width: 250px;
+  }
+`;
+
+const CardTweet = styled(TwitterShareButton)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 55px;
+  margin-left: 30px;
+  padding: 16px 24px;
+  background-color: #00aced;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+
+  @media (max-width: 520px) {
+    width: 250px;
+    margin-left: 0;
+    margin-top: 26px;
+    justify-content: center;
+  }
+`;
+
+// COMPONENT
 
 class QuoteCard extends Component {
   constructor(props) {
@@ -21,42 +118,40 @@ class QuoteCard extends Component {
 
   render() {
     return (
-      <div className="card">
+      <CardWrapper>
         {this.state.character ? (
           <>
-            <img
+            <CardImg
               src={require(`../images/${this.state.character}.png`)}
               alt={this.state.character}
-              className="card__img"
             />
-            <blockquote className="card__quote">{this.state.quote}</blockquote>
-            <cite className="card__author">- {this.state.character}</cite>
+            <CardQuote>{this.state.quote}</CardQuote>
+            <CardAuthor>- {this.state.character}</CardAuthor>
           </>
         ) : (
           <Spinner />
         )}
 
-        <div className="buttons">
-          <button
-            className="card__btn card__btn--fetch"
+        <CardButtons>
+          <CardBtn
+            fetch
             onClick={() => {
               this.getQuote();
             }}
           >
             GET ANOTHER ONE
-          </button>
+          </CardBtn>
 
-          <TwitterShareButton
-            className="card__btn card__btn--tweet"
+          <CardTweet
             title={`"${this.state.quote} " - ${this.state.character}`}
             hashtags={["simpsons"]}
             url={window.location.href}
           >
             <TwitterIcon size={32} />
             TWEET
-          </TwitterShareButton>
-        </div>
-      </div>
+          </CardTweet>
+        </CardButtons>
+      </CardWrapper>
     );
   }
 }

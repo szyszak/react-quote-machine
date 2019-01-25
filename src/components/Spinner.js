@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './Spinner.scss';
+import React, { Component } from "react";
+import "./Spinner.scss";
 
 class Spinner extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { TwitterShareButton, TwitterIcon } from 'react-share';
-import Spinner from './Spinner';
-import './QuoteCard.scss';
+import React, { Component } from "react";
+import { TwitterShareButton, TwitterIcon } from "react-share";
+import Spinner from "./Spinner";
+import "./QuoteCard.scss";
 
 class QuoteCard extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class QuoteCard extends Component {
   }
 
   getQuote = () => {
-    fetch('https://thesimpsonsquoteapi.glitch.me/quotes')
+    fetch("https://thesimpsonsquoteapi.glitch.me/quotes")
       .then(response => response.json())
       .then(response => this.setState(response[0]));
   };
@@ -49,7 +49,7 @@ class QuoteCard extends Component {
           <TwitterShareButton
             className="card__btn card__btn--tweet"
             title={`"${this.state.quote} " - ${this.state.character}`}
-            hashtags={['simpsons']}
+            hashtags={["simpsons"]}
             url={window.location.href}
           >
             <TwitterIcon size={32} />

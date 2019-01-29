@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 import QuoteCard from "./QuoteCard";
@@ -48,17 +48,13 @@ const AppWrapper = styled.div`
 
 // COMPONENT
 
-class App extends Component {
-  render() {
-    return (
-      <>
-        <GlobalStyles />
-        <AppWrapper>
-          <QuoteCard />
-        </AppWrapper>
-      </>
-    );
-  }
-}
+const App = () => (
+  <>
+    <GlobalStyles />
+    <AppWrapper>
+      <QuoteCard />
+    </AppWrapper>
+  </>
+);
 
 export default App;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 // STYLES
@@ -54,15 +54,24 @@ const SpinnerText = styled.p`
 
 // COMPONENT
 
-class Spinner extends Component {
-  render() {
-    return (
-      <>
-        <SpinnerDots />
-        <SpinnerText>SOMETHING IS LOADING...</SpinnerText>
-      </>
-    );
-  }
-}
+// class Spinner extends Component {
+//   render() {
+//     return (
+//       <>
+//         <SpinnerDots />
+//         <SpinnerText>SOMETHING IS LOADING...</SpinnerText>
+//       </>
+//     );
+//   }
+// }
+
+const Spinner = () => {
+  return (
+    <>
+      <SpinnerDots />
+      <SpinnerText>SOMETHING IS LOADING...</SpinnerText>
+    </>
+  );
+};
 
 export default Spinner;

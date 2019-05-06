@@ -54,17 +54,6 @@ const SpinnerText = styled.p`
 
 // COMPONENT
 
-// class Spinner extends Component {
-//   render() {
-//     return (
-//       <>
-//         <SpinnerDots />
-//         <SpinnerText>SOMETHING IS LOADING...</SpinnerText>
-//       </>
-//     );
-//   }
-// }
-
 const Spinner = () => {
   return (
     <>

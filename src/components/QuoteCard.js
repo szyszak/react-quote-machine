@@ -44,6 +44,14 @@ const CardQuote = styled.blockquote`
   }
 `;
 
+const ErrorMsg = styled.p`
+  margin-top: 20px;
+  font-family: "Gloria Hallelujah";
+  font-size: 22px;
+  font-weight: bold;
+  color: #ea1b1b;
+`;
+
 const CardAuthor = styled.cite`
   margin-top: 16px;
   font-size: 20px;
@@ -103,13 +111,21 @@ const CardTweet = styled(TwitterShareButton)`
 class QuoteCard extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      data: null,
+      error: false
+    };
   }
 
   getQuote = () => {
-    fetch("https://thesimpsonsquoteapi.glitch.me/quotes")
+    fetch("https://thesimpsonsquoteapi.glitch.me/quotes", { mode: "no-cors" })
       .then(response => response.json())
-      .then(response => this.setState(response[0]));
+      .then(response => this.setState({ data: response[0] }))
+      .catch(error => {
+        this.setState({
+          error: true
+        });
+      });
   };
 
   componentDidMount() {
@@ -119,15 +135,17 @@ class QuoteCard extends Component {
   render() {
     return (
       <CardWrapper>
-        {this.state.character ? (
+        {this.state.data ? (
           <>
             <CardImg
-              src={require(`../images/${this.state.character}.png`)}
+              src={require(`../images/${this.state.data.character}.png`)}
               alt={this.state.character}
             />
-            <CardQuote>{this.state.quote}</CardQuote>
-            <CardAuthor>- {this.state.character}</CardAuthor>
+            <CardQuote>{this.state.data.quote}</CardQuote>
+            <CardAuthor>- {this.state.data.character}</CardAuthor>
           </>
+        ) : this.state.error ? (
+          <ErrorMsg>Something went wrong, please try again later.</ErrorMsg>
         ) : (
           <Spinner />
         )}

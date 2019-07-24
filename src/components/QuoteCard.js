@@ -118,7 +118,7 @@ class QuoteCard extends Component {
   }
 
   getQuote = () => {
-    fetch("https://thesimpsonsquoteapi.glitch.me/quotes", { mode: "no-cors" })
+    fetch("https://thesimpsonsquoteapi.glitch.me/quotes")
       .then(response => response.json())
       .then(response => this.setState({ data: response[0] }))
       .catch(error => {
@@ -145,7 +145,7 @@ class QuoteCard extends Component {
             <CardAuthor>- {this.state.data.character}</CardAuthor>
           </>
         ) : this.state.error ? (
-          <ErrorMsg>Something went wrong, please try again later.</ErrorMsg>
+          <ErrorMsg>Server seems to be down, please try again later.</ErrorMsg>
         ) : (
           <Spinner />
         )}
